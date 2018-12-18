@@ -37,6 +37,7 @@ class Config {
         this._token_secreto = 'zukulencia';
         this._app = { port: 5000 };
         this._db = { host: '127.0.0.1', port: 3306, database: 'esimple', username: 'root', password: '1234', dialec: 'mysql' };
+        //-this._db = { host: '35.232.156.254', port: 3306, database: 'esimple', username: 'esSimple', password: '#1q2w3e4r', dialec: 'mysql' }
         this._keys = {
             facebook: {
                 clientID: '870496999775638',
@@ -61,10 +62,11 @@ class Config {
         };
     }
     produccion() {
-        this._url_allow_origin = ['https://esimplefront.herokuapp.com', 'https://admin.elgigantedelosazulejos.com.mx', 'https://elgigantedelosazulejos.com.mx', 'http://lvh.me:4200'];
+        //-this._url_allow_origin = ['https://esimplefront.herokuapp.com', 'https://admin.elgigantedelosazulejos.com.mx', 'https://elgigantedelosazulejos.com.mx', 'http://lvh.me:4200']
+        this._url_allow_origin = ['https://essimple.mx', 'https://admin.essimple.mx', 'https://contratista.essimple.mx', 'https://inversionista.essimple.mx', 'http://lvh.me:4200'];
         this._token_secreto = 'zukulenciamaspro';
         this._app = { port: 5000 };
-        this._db = { host: 'us-cdbr-iron-east-01.cleardb.net', port: 3306, database: 'heroku_36f0b6cec16010f', username: 'b3c714d746612b', password: '98f8c0f6', dialec: 'mysql' };
+        this._db = { host: '35.232.156.254', port: 3306, database: 'esimple', username: 'esSimple', password: '#1q2w3e4r', dialec: 'mysql' };
         //-mysql://b3c714d746612b:98f8c0f6@us-cdbr-iron-east-01.cleardb.net/heroku_36f0b6cec16010f?reconnect=true
         this._keys = {
             facebook: {
@@ -74,7 +76,7 @@ class Config {
             },
             google: {
                 clientID: "65502020027-2hcilnkgsbeu4n0g1agt8fd2uicgkf0f.apps.googleusercontent.com",
-                clientSecret: "ucfMnrabQOlmwwZp3gTFM4o8",
+                clientSecret: "AIzaSyCkzJimM5L6Za9p6C9RxNWEP8OyisLHsQU",
                 callbackURL: "http://api.lvh.me:5000/login/google/callback"
             },
             twitter: {

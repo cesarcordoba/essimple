@@ -152,10 +152,10 @@ app.get('*.*', express.static('./dist/browser', {
 
 let ruteador = Ruteador.init();
 
-ruteador.setRuteoMain(['/*'])
-ruteador.setRuteoAdmin(['/*'])
-ruteador.setRuteoInversionista(['/*'])
-ruteador.setRuteoContratista(['/*'])
+ruteador.setRuteoMain(['/', '/proyectos', '/proyecto/:id', 'nosotros', 'preguntas', 'contacto', 'registro', 'login', 'social/:token'])
+ruteador.setRuteoAdmin(['/','proyectos','proyectos/:id', 'usuarios', 'inversionistas', 'inversionista/:id', 'contratistas', 'contratista/:id'])
+ruteador.setRuteoInversionista(['/', 'proyectos' ])
+ruteador.setRuteoContratista(['/', 'proyectos', 'proyectos/:id'])
 
 app.use('/', ruteador.getRuteoMain());
 app.use('/', subdomain('admin', ruteador.getRuteoAdmin()));

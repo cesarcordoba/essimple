@@ -49,6 +49,51 @@ class UsuarioController {
             paginas: Math.round(response.count / req.body.limite)
         })))
             .catch(err => errorHandler(err, 'paginacionContratista'));
+        //* 11
+        this.llaves = (req, res, next) => modelo_1.Usuario.findById(req.params.id)
+            .then(item => item.$get('Llave'))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'Usuariollaves'));
+        //* 11
+        this.ligarllaves = (req, res, next) => modelo_1.Usuario.findById(req.params.usuario)
+            .then(item => item.$add('Llave', req.params.llave))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'ligarUsuariollaves'));
+        //* 11
+        this.desligarllaves = (req, res, next) => modelo_1.Usuario.findById(req.params.usuario)
+            .then(item => item.$remove('Llave', req.params.llave))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'desligarUsuariollaves'));
+        //* 12
+        this.avatares = (req, res, next) => modelo_1.Usuario.findById(req.params.id)
+            .then(item => item.$get('Avatares'))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'Usuarioavatares'));
+        //* 12
+        this.ligaravatares = (req, res, next) => modelo_1.Usuario.findById(req.params.usuario)
+            .then(item => item.$add('Avatares', req.params.avatar))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'ligarUsuarioavatares'));
+        //* 12
+        this.desligaravatares = (req, res, next) => modelo_1.Usuario.findById(req.params.usuario)
+            .then(item => item.$remove('Avatares', req.params.avatar))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'desligarUsuarioavatares'));
+        //* 13
+        this.logs = (req, res, next) => modelo_1.Usuario.findById(req.params.id)
+            .then(item => item.$get('Logs'))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'Usuariologs'));
+        //* 13
+        this.ligarlogs = (req, res, next) => modelo_1.Usuario.findById(req.params.usuario)
+            .then(item => item.$add('Logs', req.params.log))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'ligarUsuariologs'));
+        //* 13
+        this.desligarlogs = (req, res, next) => modelo_1.Usuario.findById(req.params.usuario)
+            .then(item => item.$remove('Logs', req.params.log))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'desligarUsuariologs'));
         //* 5
         this.inversionistas = (req, res, next) => modelo_1.Usuario.findById(req.params.id)
             .then(item => item.$get('Inversionistas'))

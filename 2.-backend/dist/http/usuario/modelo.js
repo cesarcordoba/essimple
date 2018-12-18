@@ -9,10 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const modelo_1 = require("../llave/modelo");
 const sequelize_typescript_1 = require("sequelize-typescript");
-const modelo_1 = require("../inversionista/modelo");
-const modelo_2 = require("../proyecto/modelo");
-const modelo_3 = require("../contratista/modelo");
+const modelo_2 = require("../inversionista/modelo");
+const modelo_3 = require("../proyecto/modelo");
+const modelo_4 = require("../avatar/modelo");
+const modelo_5 = require("../log/modelo");
+const modelo_6 = require("../contratista/modelo");
 let Usuario = class Usuario extends sequelize_typescript_1.Model {
     constructor(values, options) {
         super(values, options);
@@ -43,11 +46,27 @@ __decorate([
     __metadata("design:type", void 0)
 ], Usuario.prototype, "tipo", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsToMany(() => modelo_2.Proyecto, () => modelo_1.Inversionista, 'IdUsuario', 'IdProyecto'),
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.INTEGER),
+    __metadata("design:type", Number)
+], Usuario.prototype, "status", void 0);
+__decorate([
+    sequelize_typescript_1.HasMany(() => modelo_4.Avatar, 'IdUsuario'),
+    __metadata("design:type", Array)
+], Usuario.prototype, "Avatares", void 0);
+__decorate([
+    sequelize_typescript_1.HasMany(() => modelo_5.Log, 'IdUsuario'),
+    __metadata("design:type", Array)
+], Usuario.prototype, "Logs", void 0);
+__decorate([
+    sequelize_typescript_1.HasOne(() => modelo_1.Llave, 'IdUsuario'),
+    __metadata("design:type", modelo_1.Llave)
+], Usuario.prototype, "Llave", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsToMany(() => modelo_3.Proyecto, () => modelo_2.Inversionista, 'IdUsuario', 'IdProyecto'),
     __metadata("design:type", Array)
 ], Usuario.prototype, "Inversionistas", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsToMany(() => modelo_2.Proyecto, () => modelo_3.Contratista, 'IdUsuario', 'IdProyecto'),
+    sequelize_typescript_1.BelongsToMany(() => modelo_3.Proyecto, () => modelo_6.Contratista, 'IdUsuario', 'IdProyecto'),
     __metadata("design:type", Array)
 ], Usuario.prototype, "Contratistas", void 0);
 Usuario = __decorate([

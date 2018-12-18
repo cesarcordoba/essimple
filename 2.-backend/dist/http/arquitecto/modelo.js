@@ -25,7 +25,7 @@ __decorate([
     __metadata("design:type", void 0)
 ], Arquitecto.prototype, "cedula", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsToMany(() => modelo_1.Contratista, 'arquitectoscontratistas', 'IdContratista', 'IdArquitecto'),
+    sequelize_typescript_1.BelongsToMany(() => modelo_1.Contratista, 'arquitectoscontratistas', 'IdArquitecto', 'IdContratista'),
     __metadata("design:type", Array)
 ], Arquitecto.prototype, "Contratistas", void 0);
 Arquitecto = __decorate([

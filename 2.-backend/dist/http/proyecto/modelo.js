@@ -61,6 +61,34 @@ __decorate([
     __metadata("design:type", Number)
 ], Proyecto.prototype, "retorno", void 0);
 __decorate([
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.STRING),
+    __metadata("design:type", void 0)
+], Proyecto.prototype, "participacion", void 0);
+__decorate([
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.STRING),
+    __metadata("design:type", void 0)
+], Proyecto.prototype, "pago_utilidades", void 0);
+__decorate([
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.STRING),
+    __metadata("design:type", void 0)
+], Proyecto.prototype, "ubicacion", void 0);
+__decorate([
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.STRING),
+    __metadata("design:type", void 0)
+], Proyecto.prototype, "url_ubicacion", void 0);
+__decorate([
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.STRING),
+    __metadata("design:type", void 0)
+], Proyecto.prototype, "fecha_inicio", void 0);
+__decorate([
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.STRING),
+    __metadata("design:type", void 0)
+], Proyecto.prototype, "fecha_termino", void 0);
+__decorate([
+    sequelize_typescript_1.Column(sequelize_typescript_1.DataType.STRING),
+    __metadata("design:type", void 0)
+], Proyecto.prototype, "status", void 0);
+__decorate([
     sequelize_typescript_1.HasMany(() => modelo_1.Portada, 'IdProyecto'),
     __metadata("design:type", Array)
 ], Proyecto.prototype, "Portadas", void 0);

@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const Autentificacion_1 = require("./http/rutas/Autentificacion");
 const express = require("express");
+const subdomain = require("express-subdomain");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
 const morgan = require("morgan");
 // import { UsuarioRouter } from './http/rutas/Usuario';
-// import { AutentificacionRouter } from './http/rutas/Autentificacion';
 // import { ProspectoRouter } from './http/rutas/Prospecto';
 //conexion a la base de datos
 const conexion_1 = require("./http/conexion");
@@ -23,6 +24,9 @@ const ruta_6 = require("./http/usuario/ruta");
 const ruta_7 = require("./http/contratista/ruta");
 const ruta_8 = require("./http/arquitecto/ruta");
 const ruta_9 = require("./http/constructora/ruta");
+const ruta_10 = require("./http/llave/ruta");
+const ruta_11 = require("./http/avatar/ruta");
+const ruta_12 = require("./http/log/ruta");
 const modelo_1 = require("./http/proyecto/modelo");
 const modelo_2 = require("./http/contacto/modelo");
 const modelo_3 = require("./http/multimedia/modelo");
@@ -32,6 +36,9 @@ const modelo_6 = require("./http/usuario/modelo");
 const modelo_7 = require("./http/contratista/modelo");
 const modelo_8 = require("./http/arquitecto/modelo");
 const modelo_9 = require("./http/constructora/modelo");
+const modelo_10 = require("./http/llave/modelo");
+const modelo_11 = require("./http/avatar/modelo");
+const modelo_12 = require("./http/log/modelo");
 class Server {
     constructor(port, modo, urlAllowOrigin) {
         this.port = port;
@@ -60,10 +67,14 @@ class Server {
             modelo_7.Contratista,
             modelo_8.Arquitecto,
             modelo_9.Constructora,
+            modelo_10.Llave,
+            modelo_11.Avatar,
+            modelo_12.Log,
         ]);
         conexion.sync();
         this.app.use((req, res, next) => {
             let origin = req.headers.origin;
+            console.log(origin);
             if (origin && this._url_allow_origin.indexOf(origin.toString()) > -1) {
                 res.setHeader('Access-Control-Allow-Origin', origin);
             }
@@ -90,8 +101,13 @@ class Server {
             new ruta_7.ContratistaRouter().rutas(),
             new ruta_8.ArquitectoRouter().rutas(),
             new ruta_9.ConstructoraRouter().rutas(),
+            new ruta_10.LlaveRouter().rutas(),
+            new ruta_11.AvatarRouter().rutas(),
+            new ruta_12.LogRouter().rutas(),
+            // new UsuarioRouter().rutas(),
+            new Autentificacion_1.AutentificacionRouter().rutas(),
         ]);
-        // this.app.use(subdomain('api', rutas.route))
+        this.app.use(subdomain('api', rutas.route));
         this.app.use(rutas.route);
     }
 }

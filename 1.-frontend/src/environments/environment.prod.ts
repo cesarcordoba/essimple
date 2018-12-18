@@ -3,7 +3,7 @@ export const environment = {
 };
 
 export const APILOCAL = {
-  url: 'https://api.essimple.mx/'
+  url: 'https://api.essimple.mx'
 
 }
 

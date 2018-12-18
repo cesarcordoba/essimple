@@ -90,7 +90,7 @@ export class Server {
 
         this.app.use((req, res, next) => {
             let origin = req.headers.origin;
-
+            console.log(origin)
             if(origin && this._url_allow_origin.indexOf(origin.toString()) > -1){
                  res.setHeader('Access-Control-Allow-Origin', origin);
             }

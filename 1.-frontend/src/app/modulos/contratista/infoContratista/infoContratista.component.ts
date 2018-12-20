@@ -152,8 +152,23 @@ export class InfocontratistaComponent implements OnInit {
     console.log('Info contratista component works')
     this.us.obtenerUsuario().subscribe(user => {
         this.usuario = user
-        UsuarioService.contratistas(6)
-        .then(response =>console.log(response))
+        UsuarioService.contratistas(2)
+        .then(response =>{
+            this.contratista = response[0].Contratista
+            console.log(response)
+            if(this.contratista.tipo === "arquitecto")
+                ContratistaService.arquitectos(this.contratista.id)
+                .then(response => {this.arquitecto = response[0]; this.constructora = null})
+            else
+                ContratistaService.constructoras(this.contratista.id)
+                .then(response => {this.constructora = response[0]; this.arquitecto = null})
+        })
+        MultimediaService.fotoPerfil(2)
+        .then(response => {
+            this.idMultimedia = response[0].id
+            this.fotoPerfil = response[0].link
+            this.control = 2
+        })
     // UsuarioService.contratistas(this.usuario.id)
     // .then(response => {
     //     this.contratista = response[0].Contratista

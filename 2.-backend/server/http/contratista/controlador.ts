@@ -91,4 +91,10 @@ export class ContratistaController {
             .then(result => res.status(200).jsonp(result))
             .catch(err => errorHandler(err, 'desligarContratistaconstructoras'))
     
+    //Controlador agregado manualmente
+    obtenerInfo = (req: Request, res: Response, next: NextFunction) =>
+        Contratista.findById(req.params.id)
+            .then(item => item.$get('Usuarios'))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'obtenerInfo'))
 }

@@ -49,6 +49,9 @@ export class ContratistaRouter {
             .put(this.controlador.ligarconstructoras)
             .delete(this.controlador.desligarconstructoras)
         
+        //* Ruta agregada manualmente
+        this._rutas.route('/data/contratista-usuario/contratista/:id')
+            .get(this.controlador.obtenerInfo)
         
         }
 

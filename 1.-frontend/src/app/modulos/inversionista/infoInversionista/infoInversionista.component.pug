@@ -17,12 +17,6 @@
                 button.btn-dropify(mat-icon-button, (click)="guardarFoto()")
                     mat-icon save
     .foto-perfil-avatar(*ngIf="fotoAvatar")
-        //- .barra-editar-foto-inversionista
-        //-     button(mat-button, (click)="editarFoto()")
-        //-         span(*ngIf="!edicionFoto") Editar
-        //-         mat-icon(*ngIf="!edicionFoto") edit
-        //-         span(*ngIf="edicionFoto") Cancelar
-        //-         mat-icon(*ngIf="edicionFoto") clear
         .subir-foto
             .imagen-container(*ngIf="!edicionFoto")
                 .imagen(*ngIf="carga==false")

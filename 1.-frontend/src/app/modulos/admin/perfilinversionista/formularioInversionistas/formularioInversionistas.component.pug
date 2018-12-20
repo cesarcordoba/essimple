@@ -3,12 +3,6 @@ mat-card.formulario-inversionista-admin
         mat-toolbar-row(style="justify-content : space-between")
             .titulo
                 h3 Información Básica
-    .editar
-        button.btn-editar-inversionista(mat-button, (click)="editarInversionista()")
-            span(*ngIf="!valid") Editar
-            mat-icon(*ngIf="!valid") edit
-            span(*ngIf="valid") Cancelar
-            mat-icon(*ngIf="valid") clear
     .info-preview(*ngIf="!valid")
         .nombre
             p Nombre(s): 

@@ -17,7 +17,8 @@ export class InformacioninversionistaComponent implements OnInit {
 
     usuarios: any
     @Input() proyectos
-    @Input()fotoPerfil
+    @Input() fotoPerfil
+    @Input() fotoAvatar
 
     constructor() {
 

@@ -31,6 +31,7 @@ import { PerfilproyectosmainModule } from './perfilProyectosMain/perfilProyectos
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { SocialComponent } from '../../guards/social/social.component';
+import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confirm-del-dialog.component';
 
 @NgModule({
 	imports: [
@@ -54,10 +55,12 @@ import { SocialComponent } from '../../guards/social/social.component';
 		MainComponent,
 		LoginComponent,
 		RegistroComponent,
-		SocialComponent
+		// SocialComponent,
+		ConfirmDelDialogComponent
 	],
 	entryComponents : [
-        LoginComponent
+		LoginComponent,
+		ConfirmDelDialogComponent
     ],
 })
 export class MainModule { }

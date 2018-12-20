@@ -1,5 +1,7 @@
 mat-card.foto-perfil-container
     .imagen-container
-        .imagen
+        .imagen(*ngIf="!fotoAvatar")
             img([src]="fotoPerfil")
+        .imagen(*ngIf="fotoAvatar")
+            img([src]="fotoAvatar")
         h4 Foto de Perfil

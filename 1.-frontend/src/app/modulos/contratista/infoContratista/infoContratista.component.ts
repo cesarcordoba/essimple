@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material';
 import {  BehaviorSubject, Observable  } from 'rxjs'
 
 import { UsuarioService, AWSService, MultimediaService, ContratistaService, AuthService } from '../../../servicios';
-import { Usuario } from 'src/app/modelos/Usuario.model';
+import { Usuario } from './../../../modelos/Usuario.model';
 
 @Component({
   selector: 'infoContratista',
@@ -63,7 +63,7 @@ export class InfocontratistaComponent implements OnInit {
                     MultimediaService.crear({
                         link: archivo[0],
                         key: archivo[1],
-                        tipo: 1 //- * <---AQUI REMPLAZAR POR LA VARIABLE QUE TENGA EL ID DEL USUARIO
+                        tipo: this.usuario.id //- * <---AQUI REMPLAZAR POR LA VARIABLE QUE TENGA EL ID DEL USUARIO
                     })
                     .then(imagen =>this.fotoPerfil = imagen.link)
                     .then(algomas =>  {
@@ -79,7 +79,7 @@ export class InfocontratistaComponent implements OnInit {
                         id: this.idMultimedia,
                         link: archivo[0],
                         key: archivo[1],
-                        tipo: 1 //- * <---AQUI REMPLAZAR POR LA VARIABLE QUE TENGA EL ID DEL USUARIO
+                        tipo: this.usuario.id //- * <---AQUI REMPLAZAR POR LA VARIABLE QUE TENGA EL ID DEL USUARIO
                     })
                     .then(imagen => this.fotoPerfil = archivo[0])
                     .then(algomas =>  this.carga = false)
@@ -148,43 +148,19 @@ export class InfocontratistaComponent implements OnInit {
     }
 
   ngOnInit() {
-
-    console.log('Info contratista component works')
-    this.us.obtenerUsuario().subscribe(user => {
-        this.usuario = user
-        UsuarioService.contratistas(2)
-        .then(response =>{
-            this.contratista = response[0].Contratista
-            console.log(response)
-            if(this.contratista.tipo === "arquitecto")
-                ContratistaService.arquitectos(this.contratista.id)
-                .then(response => {this.arquitecto = response[0]; this.constructora = null})
-            else
-                ContratistaService.constructoras(this.contratista.id)
-                .then(response => {this.constructora = response[0]; this.arquitecto = null})
+        console.log('InfoContratista component works')
+        this.us.obtenerUsuario().subscribe(user => {
+            this.usuario = user
+            UsuarioService.contratistas(this.usuario.id)
+            .then(response => console.log(response))
+            MultimediaService.fotoPerfil(this.usuario.id)
+            .then(response =>{
+                this.idMultimedia = response[0].id
+                this.fotoPerfil = response[0].link
+                this.control = 2
+            })
         })
-        MultimediaService.fotoPerfil(2)
-        .then(response => {
-            this.idMultimedia = response[0].id
-            this.fotoPerfil = response[0].link
-            this.control = 2
-        })
-    // UsuarioService.contratistas(this.usuario.id)
-    // .then(response => {
-    //     this.contratista = response[0].Contratista
-    //     if(this.contratista.tipo === "arquitecto")
-    //         ContratistaService.arquitectos(this.contratista.id)
-    //         .then(response => {this.arquitecto = response[0]; this.constructora = null})
-    //     else
-    //         ContratistaService.constructoras(this.contratista.id)
-    //         .then(response => {this.constructora = response[0]; this.arquitecto = null})
-    // })
-    // MultimediaService.fotoPerfil(this.usuario.id)
-    // .then(response => {
-    //     this.idMultimedia = response[0].id
-    //     this.fotoPerfil = response[0].link
-    //     this.control = 2
-    // })
+        
   }
 
 }

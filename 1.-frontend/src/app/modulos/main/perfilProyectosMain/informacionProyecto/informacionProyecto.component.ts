@@ -1,5 +1,10 @@
+import { ConfirmDelDialogComponent } from './../../fragments/confirm-del-dialog/confirm-del-dialog.component';
 
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { MatDialog, MatSnackBar } from '@angular/material';
+
+import { AuthService } from './../../../../servicios/auth.service';
+import { UsuarioService } from '../../../../servicios';
 
 @Component({
   selector: 'informacionProyecto',
@@ -18,12 +23,33 @@ export class InformacionproyectoComponent implements OnInit {
     color = 'warn';
     mode = 'determinate';
     value = 60;
+    registrado: any
 
-    constructor() {
+    constructor(public _dialog: MatDialog, public snackBar: MatSnackBar, private us: AuthService) {
+
+  }
+
+  inversion(){
+    this._dialog.open(ConfirmDelDialogComponent, {
+      disableClose: true,
+    }).afterClosed().subscribe(result => {
+
+      if (result) {
+
+        UsuarioService.ligarinversionistas(this.registrado.id, this.proyecto.id)
+        .then(response => console.log(response))
+
+        //-this.snackBar.open("Guardado Correctamente", "cerrar", { duration: 1000 });
+      }
+    });
 
   }
 
   ngOnInit() {
+
+    this.us.obtenerUsuario().subscribe(user => {
+      this.registrado = user
+  })
 
 
 

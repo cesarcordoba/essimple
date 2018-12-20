@@ -33,7 +33,6 @@ export class InversionistaComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		console.log('inversionista component works')
 		this.us.obtenerUsuario().subscribe(user => {
-			console.log(user)
 			this.usuario = user
 		})
 	}

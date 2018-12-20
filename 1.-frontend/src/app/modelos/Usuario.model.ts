@@ -9,6 +9,8 @@ export class Usuario {
     avatares : any;
     logs : any;
     contratista: any;
+    correo:any;
+    apellido: any
 
 
 

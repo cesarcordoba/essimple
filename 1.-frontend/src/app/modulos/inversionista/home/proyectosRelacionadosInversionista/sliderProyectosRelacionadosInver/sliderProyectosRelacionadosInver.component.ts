@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { ProyectoService } from '../../../../../servicios';
+import { Router } from '@angular/router';
 @Component({
     selector: 'sliderProyectosRelacionadosInver',
     templateUrl: './sliderProyectosRelacionadosInver.component.pug',
@@ -14,17 +15,13 @@ export class SliderproyectosrelacionadosinverComponent implements OnInit {
     control : any
     currentSlide : any;
 
-    borde = false ?  {'border-color':'rgb(76, 175, 80)'} : {'border-color':'rgb(244, 67, 54)'}
-
-
-
     proyectos = {
         items : []
     }
     filtro : any;
 
-    constructor() {
-        this.slideConfig = { "slidesToShow": 5, "slidesToScroll": 4 , "arrows" : true, 'dots' : true }
+    constructor(private _router: Router) {
+        this.slideConfig = { "slidesToShow": 2, "slidesToScroll": 2 , "arrows" : true, 'dots' : true }
         this.currentSlide = 0
         this.filtro = {
                 pagina : 1,
@@ -36,8 +33,11 @@ export class SliderproyectosrelacionadosinverComponent implements OnInit {
 
     ProyectoService.paginacion(this.filtro)
     .then(response => this.proyectos = response)
-    .then(response => console.log(response))
 
+  }
+
+  mandarAProyecto(id){
+    this._router.navigate(['/proyecto/' + id]);
   }
 
   ngOnInit() {

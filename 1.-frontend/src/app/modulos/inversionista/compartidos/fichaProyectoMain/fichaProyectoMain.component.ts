@@ -1,12 +1,12 @@
 
-    import { Component, Input, OnInit } from '@angular/core';
-
-
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProyectoService } from '../../../../servicios';
+import { Router } from '@angular/router';
 @Component({
   selector: 'fichaProyectoMain',
   templateUrl: './fichaProyectoMain.component.pug',
-  styleUrls: ['./fichaProyectoMain.component.styl']
+  styleUrls: ['./fichaProyectoMain.component.styl'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FichaproyectomainComponent implements OnInit {
 
@@ -14,13 +14,20 @@ export class FichaproyectomainComponent implements OnInit {
 
     @Input() proyecto
 
+    color = 'warn';
+    mode = 'determinate';
+    value = 60;
 
-    constructor() {
+    constructor(private _router: Router) {
 
     // ProyectoService.one()
     // .then(response => this.proyectos = response)
     // .then(response => console.log(response))
 
+  }
+
+  mandarAProyecto(id){
+    this._router.navigate(['/proyecto/' + id]);
   }
 
   ngOnInit() {

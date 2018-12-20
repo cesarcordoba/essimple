@@ -57,6 +57,7 @@
                     .valor
                         //- h4 ${{proyecto?.pago_utilidades}}
                         h4 Al final del proyecto
-
+            .btn-invertir
+                button.btn-invertir-proyectos(mat-button, (click)="inversion()") Invertir
         .imagen
             img(src="{{proyecto?.imagenes[1]?.link}}")

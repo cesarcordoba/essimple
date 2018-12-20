@@ -18,12 +18,6 @@ import { UsuarioService, AWSService, MultimediaService} from '../../../servicios
 })
 export class InfoinversionistaComponent implements OnInit {
 
-    borde = false ?  {'border-color':'rgb(76, 175, 80)'} : {'border-color':'rgb(244, 67, 54)'}
-    //
-    // pasarUsuario : BehaviorSubject<any>
-
-
-
     usuario: any = {}
     inversionista: any;
     edicion: boolean = false;
@@ -43,29 +37,6 @@ export class InfoinversionistaComponent implements OnInit {
         private _aws: AWSService,
         public snackBar: MatSnackBar,
         private us: AuthService) {
-
-
-    // route.params.subscribe(async (res) =>
-    //     //-UsuarioService.one(Number(res.id))
-    //     UsuarioService.one(Number(5))
-    //     .then(response => this.usuario = response)
-    //     .then(response => {
-    //         UsuarioService.inversionistas(this.usuario.id)
-    //         .then(response => this.inversionista = response[0].Inversionista)
-    //         MultimediaService.fotoPerfil(this.usuario.id)
-    //         .then(response =>{
-    //             this.idMultimedia = response[0].id
-    //             this.fotoPerfil = response[0].link
-    //             this.control = 2
-    //         })
-    //         // this.pasarUsuario.next(response);
-
-    //         this.titleService.setTitle( this.usuario.nombre );
-    //     // this.meta.updateTag({ name: 'description', content: _.replace( this.proyecto.resumen, '<p>', '')  })
-    //     // this.meta.updateTag({ name: 'keywords', content: 'pagina web, presupuesto web, cotizador online, cotizador paginas web, presupuesto tienda online,' + this.proyecto.nombre })
-
-    // }))
-
 
   }
 
@@ -132,11 +103,8 @@ export class InfoinversionistaComponent implements OnInit {
 
     console.log('inversionista component works')
 		this.us.obtenerUsuario().subscribe(user => {
-			console.log(user)
             this.usuario = user
             this.fotoAvatar = this.usuario.avatares[0].link
-            UsuarioService.inversionistas(this.usuario.id)
-            .then(response => this.inversionista = response[0].Inversionista)
             MultimediaService.fotoPerfil(this.usuario.id)
             .then(response =>{
                 this.idMultimedia = response[0].id

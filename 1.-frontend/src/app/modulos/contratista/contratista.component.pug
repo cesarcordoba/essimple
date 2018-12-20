@@ -16,10 +16,11 @@ div(class="contenedor", [class.isMobile]="mobileQuery.matches")
             div.contenido
                 router-outlet
 mat-menu(#menuUser="matMenu")
-    a(mat-menu-item, [routerLink]="['/contratista/perfil']")
-        mat-icon account_box
-    a(mat-menu-item, [routerLink]="'/login'", (click)="salir()")
+    a(mat-menu-item, [routerLink]="''")
         mat-icon exit_to_app
+        span Página principal
+    a(mat-menu-item, [routerLink]="''", (click)="salir()")
+        mat-icon clear
         span Cerrar Sesión  
 
 

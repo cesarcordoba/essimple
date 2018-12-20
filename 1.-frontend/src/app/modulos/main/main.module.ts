@@ -30,6 +30,7 @@ import { PerfilproyectosmainModule } from './perfilProyectosMain/perfilProyectos
 
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
+import { SocialComponent } from '../../guards/social/social.component';
 
 @NgModule({
 	imports: [
@@ -53,6 +54,7 @@ import { RegistroComponent } from './registro/registro.component';
 		MainComponent,
 		LoginComponent,
 		RegistroComponent,
+		SocialComponent
 	],
 	entryComponents : [
         LoginComponent

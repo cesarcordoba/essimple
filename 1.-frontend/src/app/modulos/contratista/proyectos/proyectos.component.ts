@@ -41,8 +41,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   ngOnInit() {
-  UsuarioService.contratistas(1)
-  .then(response => this.proyectos.items = response)
+    
 
   }
 }

@@ -1,10 +1,11 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'preguntasHome',
   templateUrl: './preguntasHome.component.pug',
-  styleUrls: ['./preguntasHome.component.styl']
+  styleUrls: ['./preguntasHome.component.styl'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PreguntashomeComponent implements OnInit {
 

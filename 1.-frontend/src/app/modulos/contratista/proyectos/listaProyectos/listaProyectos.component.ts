@@ -1,7 +1,7 @@
 
 import { Component, OnInit, Input } from '@angular/core';
 
-import { ProyectoService } from '../../../../servicios';
+import { ProyectoService, UsuarioService } from '../../../../servicios';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { ConfirmDelDialogComponent } from '../../fragments/confirm-del-dialog/confirm-del-dialog.component';
@@ -14,13 +14,15 @@ export class ListaproyectosComponent implements OnInit {
 
     borde = false ?  {'border-color':'rgb(76, 175, 80)'} : {'border-color':'rgb(244, 67, 54)'}
 
-   @Input() proyectos
-    
+    proyectos = {
+      items : []
+    }
     constructor(private _router: Router, private dialog: MatDialog) {
-        
+      
+      UsuarioService.contratistas(1)
+      .then(response => this.proyectos.items = response)
 
   }
-
   mandarAProyecto(id){
     this._router.navigate(['/contratista/proyectos/' + id]);
   }

@@ -90,6 +90,5 @@ export class ContratistaController {
             .then(item => item.$remove('Constructoras', req.params.constructora))
             .then(result => res.status(200).jsonp(result))
             .catch(err => errorHandler(err, 'desligarContratistaconstructoras'))
-
     
 }

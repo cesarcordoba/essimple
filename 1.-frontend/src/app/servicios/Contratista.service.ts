@@ -28,5 +28,6 @@ export class ContratistaService {
     public static desligarconstructora = (contratista , constructora) => axios.default.delete( url + '/data/contratista-constructora/' + contratista + '/' + constructora )
 
 
+
     //- Finalizo
 }

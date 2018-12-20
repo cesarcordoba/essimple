@@ -48,7 +48,7 @@ export class ContratistaRouter {
         this._rutas.route('/data/contratista-constructora/:contratista/:constructora')
             .put(this.controlador.ligarconstructoras)
             .delete(this.controlador.desligarconstructoras)
-
+        
         
         }
 

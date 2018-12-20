@@ -34,8 +34,6 @@ export class ContratistaComponent implements OnInit, OnDestroy {
 		this.us.obtenerUsuario().subscribe(user => {
 			console.log(user)
 			this.usuario = user
-
-			//user && user.getTipo() == 'admin'? this.navLinks.push({ path: '/admin/usuarios', label: 'Usuarios', icon: 'supervised_user_circle' }) : null;
 		})
 	}
 

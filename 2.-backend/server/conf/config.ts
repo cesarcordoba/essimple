@@ -86,7 +86,7 @@ class Config {
 	private produccion() {
 
 		//-this._url_allow_origin = ['https://esimplefront.herokuapp.com', 'https://admin.elgigantedelosazulejos.com.mx', 'https://elgigantedelosazulejos.com.mx', 'http://lvh.me:4200']
-		this._url_allow_origin = ['https://essimple.mx', 'https://admin.essimple.mx', 'https://contratista.essimple.mx', 'https://inversionista.essimple.mx', 'http://lvh.me:4200', 'http://www.essimple.mx']
+		this._url_allow_origin = ['https://essimple.mx', 'https://admin.essimple.mx', 'https://contratista.essimple.mx', 'https://inversionista.essimple.mx', 'http://lvh.me:4200', 'https://www.essimple.mx']
 		
 		this._token_secreto = 'zukulenciamaspro';
 

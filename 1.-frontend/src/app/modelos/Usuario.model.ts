@@ -8,6 +8,7 @@ export class Usuario {
     tipo : string;
     avatares : any;
     logs : any;
+    contratista: any;
 
 
 
@@ -20,6 +21,13 @@ export class Usuario {
         return new Promise(resolve => {
             UsuarioService.avatares(this.id)
             .then(response => this.avatares = response)
+            .then(response => resolve(response))
+        })
+    }
+    obtenerContratistas(){
+        return new Promise(resolve => {
+            UsuarioService.contratistas(this.id)
+            .then(response => this.contratista = response)
             .then(response => resolve(response))
         })
     }

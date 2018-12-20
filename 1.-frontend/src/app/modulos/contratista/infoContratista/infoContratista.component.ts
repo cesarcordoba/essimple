@@ -8,7 +8,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import {  BehaviorSubject, Observable  } from 'rxjs'
 
-import { UsuarioService, AWSService, MultimediaService, ContratistaService } from '../../../servicios';
+import { UsuarioService, AWSService, MultimediaService, ContratistaService, AuthService } from '../../../servicios';
+import { Usuario } from 'src/app/modelos/Usuario.model';
+
 @Component({
   selector: 'infoContratista',
   templateUrl: './infoContratista.component.pug',
@@ -20,12 +22,8 @@ import { UsuarioService, AWSService, MultimediaService, ContratistaService } fro
 export class InfocontratistaComponent implements OnInit {
 
     borde = false ?  {'border-color':'rgb(76, 175, 80)'} : {'border-color':'rgb(244, 67, 54)'}
-    //
-    // pasarUsuario : BehaviorSubject<any>
 
-
-
-    usuario: any = {}
+    usuario: Usuario;
     contratista: any;
     file: any;
     idMultimedia: any;
@@ -45,38 +43,8 @@ export class InfocontratistaComponent implements OnInit {
         private meta : Meta,
         private fb: FormBuilder,
         private _aws: AWSService,
+        private us: AuthService,
         public snackBar: MatSnackBar) {
-
-
-    route.params.subscribe(async (res) =>
-        //-UsuarioService.one(Number(res.id))
-        UsuarioService.one(Number(1))//-<---CAMBIAR ESTE NUMERO POR LA VARIABLE QUE TENGA EL ID DEL CONTRATISTA
-        .then(response => this.usuario = response)
-        .then(response => {
-            UsuarioService.contratistas(this.usuario.id)
-            .then(response => {
-                this.contratista = response[0].Contratista
-                if(this.contratista.tipo === "arquitecto")
-                    ContratistaService.arquitectos(this.contratista.id)
-                    .then(response => {this.arquitecto = response[0]; this.constructora = null})
-                else
-                    ContratistaService.constructoras(this.contratista.id)
-                    .then(response => {this.constructora = response[0]; this.arquitecto = null})
-
-            })
-            MultimediaService.fotoPerfil(this.usuario.id)
-            .then(response => {
-                this.idMultimedia = response[0].id
-                this.fotoPerfil = response[0].link
-                this.control = 2
-            })
-            // this.pasarUsuario.next(response);
-
-            this.titleService.setTitle( this.usuario.nombre );
-        // this.meta.updateTag({ name: 'description', content: _.replace( this.proyecto.resumen, '<p>', '')  })
-        // this.meta.updateTag({ name: 'keywords', content: 'pagina web, presupuesto web, cotizador online, cotizador paginas web, presupuesto tienda online,' + this.proyecto.nombre })
-
-    }))
 
 
   }
@@ -181,7 +149,27 @@ export class InfocontratistaComponent implements OnInit {
 
   ngOnInit() {
 
-
-
+    console.log('Info contratista component works')
+    this.us.obtenerUsuario().subscribe(user => {
+        this.usuario = user
+        UsuarioService.contratistas(6)
+        .then(response =>console.log(response))
+    // UsuarioService.contratistas(this.usuario.id)
+    // .then(response => {
+    //     this.contratista = response[0].Contratista
+    //     if(this.contratista.tipo === "arquitecto")
+    //         ContratistaService.arquitectos(this.contratista.id)
+    //         .then(response => {this.arquitecto = response[0]; this.constructora = null})
+    //     else
+    //         ContratistaService.constructoras(this.contratista.id)
+    //         .then(response => {this.constructora = response[0]; this.arquitecto = null})
+    // })
+    // MultimediaService.fotoPerfil(this.usuario.id)
+    // .then(response => {
+    //     this.idMultimedia = response[0].id
+    //     this.fotoPerfil = response[0].link
+    //     this.control = 2
+    // })
   }
+
 }

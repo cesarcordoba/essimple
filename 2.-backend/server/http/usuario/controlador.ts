@@ -161,7 +161,7 @@ export class UsuarioController {
             .then(item => item.$get('Contratistas'))
             .then(result => res.status(200).jsonp(result))
             .catch(err => errorHandler(err, 'UsuarioContratistas'))
-
+    
     //* 8
     ligarcontratistas = (req: Request, res: Response, next: NextFunction) =>
         Usuario.findById(req.params.usuario)

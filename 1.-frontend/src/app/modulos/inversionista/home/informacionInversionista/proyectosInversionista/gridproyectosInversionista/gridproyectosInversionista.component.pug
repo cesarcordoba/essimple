@@ -11,6 +11,8 @@
                     h4 {{proyecto.nombre}}
                     p {{proyecto.createdAt | date: 'mediumDate'}}
                     p {{proyecto.resumen}}
+    button.btn-cerrarMetricas(mat-button, *ngIf="habilitado", (click)="ocultarMetricas()")
+        mat-icon clear
     .metricas-container(*ngIf="habilitado")
         .contenedor-izquierda
             .porcentaje-acumulado
@@ -22,7 +24,7 @@
                     [diameter]="diameter")
                 p {{value}}%
             .pago-minimo
-                h4 ${{metrica?.minimo}}
+                h4  Pago minimo de inversion: ${{metrica?.minimo}}
         .contenedor-centro
             .fecha-transcurrida
                 mat-progress-spinner(
@@ -32,10 +34,10 @@
                     [value]="value_fecha",
                     [diameter]="diameter_fecha")
             .fecha-numero
-                h4  {{metrica?.plazo}} meses 
+                h4  Tiempo de duracion: {{metrica?.plazo}} meses 
         .contenedor-derecha
             .meta
-                h1 ${{metrica?.meta}}
+                h1 Meta: ${{metrica?.meta}}
             .conseguido
-                h1 ${{metrica?.acumulado}}
+                h1 Acumulado actualmente: ${{metrica?.acumulado}}
 //-mat-paginator([length]="proyectos.items.length", [pageSize]="10", [pageSizeOptions]="[5, 10, 25, 100]")

@@ -47,9 +47,15 @@ export class HomeComponent implements OnInit {
         if(this.usuario.avatares.length > 0){
             this.fotoAvatar = this.usuario.avatares[0].link
         }
-        console.log(this.fotoAvatar)
+       
         MultimediaService.fotoPerfil(this.usuario.id)
         .then(response => this.fotoPerfil = response[0].link)
+        console.log(this.usuario.id)
+        UsuarioService.inversionistas(this.usuario.id)
+        .then(response => {
+            this.proyectos = response
+            console.log(response.data) 
+        })
     
     })
   }

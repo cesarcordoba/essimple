@@ -61,7 +61,10 @@ export class GridproyectosinversionistaComponent implements OnInit {
     let regex=/(\d*.\d{0,2})/;
     this.value = recorte.match(regex)[0];
   }
-  
+
+  ocultarMetricas(){
+    this.habilitado = false;
+  }  
 
   ngOnInit() {
 

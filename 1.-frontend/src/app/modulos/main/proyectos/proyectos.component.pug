@@ -1,11 +1,11 @@
 section
     .filtros-home
-        button(mat-button) Todos
-        button(mat-button) Vigentes
-        button(mat-button) Proximos
-        button(mat-button) Terminados
+        button(mat-button, (click)="filtrar(0)") Todos
+        button(mat-button, (click)="filtrar(1)") Vigentes
+        button(mat-button, (click)="filtrar(2)") Proximos
+        button(mat-button, (click)="filtrar(3)") Terminados
     .barra
     .proyectos
         filtrosProyectos
-        gridProyectosMain
+        gridProyectosMain([proyectos]="proyectos")
         

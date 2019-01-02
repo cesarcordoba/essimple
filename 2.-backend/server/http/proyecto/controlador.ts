@@ -39,6 +39,7 @@ export class ProyectoController {
     paginacion = (req: Request, res: Response, next: NextFunction) =>
         Proyecto.findAndCountAll({
             // order : ['nombre']
+           where: req.body.where
         	}).then(response =>
                 res.status(200).jsonp(
                     new Object({

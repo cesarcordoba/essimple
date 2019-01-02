@@ -29,7 +29,10 @@
                 mat-datepicker-toggle(matSuffix [for]="picker2" )
                 mat-datepicker(#picker2)
             mat-form-field
-                input(matInput, placeholder="Status", [(ngModel)]="proyecto.status",  name="status", [disabled]="valid")
+                mat-select(placeholder="Status", [(ngModel)]="proyecto.status",  name="status", [disabled]="valid") 
+                    mat-option(value="vigente") Vigente
+                    mat-option(value="proximo") Proximo
+                    mat-option(value="terminado") Terminado
         .ubicaciones
             mat-form-field
                 input(matInput, placeholder="Ubicación", [(ngModel)]="proyecto.ubicacion",  name="ubicacion", [disabled]="valid")

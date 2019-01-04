@@ -84,6 +84,33 @@ export class ProyectosComponent implements OnInit {
 
   }
 
+  recibir(peticion: any){
+    let variable: {}
+    if(peticion.rendimiento != null && peticion.plazo === null){
+      variable = {rendimiento: peticion.rendimiento};
+    }else
+    if(peticion.plazo != null && peticion.rendimiento === null){
+      variable = {plazo: peticion.plazo};
+
+    }else
+    if(peticion.plazo === null && peticion.rendimiento === null){
+      variable = {};
+    }else{
+      variable = {rendimiento: peticion.rendimiento, plazo:peticion.plazo};
+    }
+
+    this.filtro = {
+      pagina : 1,
+      limite :  (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ?  5 :  3,
+      order : ['id'],
+      where : variable,
+      include : []
+    }
+    ProyectoService.paginacion(this.filtro)
+    .then(response => this.proyectos = response)
+  }
+
+
   ngOnInit() {
 
     console.log( this.borde )

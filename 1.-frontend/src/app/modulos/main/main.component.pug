@@ -6,11 +6,10 @@ main
                     img(src="assets/images/simple.png")
             .links
                 div(*ngFor="let link of navLinks" )
-                    button(mat-button, [routerLink]="link.path" ) {{link.label}}
+                    button.menus(mat-button, [routerLink]="link.path" ) {{link.label}}
             .menu
                 div(*ngIf="usuario === null")
-                    button(mat-button, (click)="login()")
-                        mat-icon account_circle
+                    button.iniciar-sesion(mat-button, (click)="login()") Iniciar Sesión
                 div(*ngIf="usuario !== null")
                     button.avatarbutton(mat-button, [mat-menu-trigger-for]="menuUser")
                         .avatar-content

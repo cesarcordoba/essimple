@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material';
 	selector: 'app-main',
 	templateUrl: './main.component.pug',
 	styleUrls: ['./main.component.styl'],
+	encapsulation: ViewEncapsulation.None,
 	animations: [
 		trigger('fadeInOut', [
 			transition(':enter', [   // :enter is alias to 'void => *'

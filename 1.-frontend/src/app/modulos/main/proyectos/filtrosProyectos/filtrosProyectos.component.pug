@@ -8,7 +8,8 @@
                     thumbLabel,
                     tickInterval="1",
                     min="0",
-                    max="100")
+                    max="100",
+                    (input)="enviarRendimiento($event)")
                 p 100%
         .plazo
             h3 Plazo
@@ -18,5 +19,6 @@
                     thumbLabel,
                     tickInterval="1",
                     min="0",
-                    max="12")
+                    max="12",
+                    (input)="enviarPlazo($event)")
                 p 12 meses

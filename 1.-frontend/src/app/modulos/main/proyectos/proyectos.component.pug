@@ -6,6 +6,5 @@ section
         button(mat-button, (click)="filtrar(3)") Terminados
     .barra
     .proyectos
-        filtrosProyectos
+        filtrosProyectos((mandarOuput)="recibir($event)")
         gridProyectosMain([proyectos]="proyectos")
-        

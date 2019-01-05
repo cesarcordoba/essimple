@@ -32,4 +32,7 @@ export { Prospecto } from './prospecto.model';
     
 
         export { Llave } from './Llave.model';
+
+
+        export { Subscripcion } from './Subscripcion.model';
     

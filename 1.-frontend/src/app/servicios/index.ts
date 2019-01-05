@@ -35,4 +35,7 @@
     
 
         export { LlaveService } from './Llave.service';
+
+
+        export { SubscripcionService } from './Subscripcion.service';
     

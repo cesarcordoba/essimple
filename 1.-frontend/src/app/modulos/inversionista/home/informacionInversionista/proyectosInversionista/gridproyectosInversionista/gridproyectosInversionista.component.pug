@@ -5,14 +5,25 @@
         )
         mat-grid-tile(*ngFor="let proyecto of proyectos", [colspan]="colspan", [rowspan]="rowspan", (click)="verMetricas(proyecto)")
             .proyecto
-                .portada
-                    img(src="{{proyecto?.portadas[0]?.link}}")
+                .portada-container
+                    .portada
+                        img(src="{{proyecto?.portadas[0]?.link}}")
+                    .circulo-porcentaje
+                        p {{proyecto.porcentaje}}%
+                    .progreso
+                        mat-progress-bar(
+                            class="example-margin",
+                            [color]="color",
+                            [mode]="mode",
+                            [value]="proyecto.porcentaje")
                 .info-basica
-                    h4 {{proyecto.nombre}}
-                    p {{proyecto.createdAt | date: 'mediumDate'}}
+                    h3 {{proyecto.nombre}}
+                    h4 {{proyecto.fecha_inicio | date: 'mediumDate'}}
+                    .linea-division-proyectos
                     p {{proyecto.resumen}}
-    button.btn-cerrarMetricas(mat-button, *ngIf="habilitado", (click)="ocultarMetricas()")
-        mat-icon clear
+    .cerrar-metricas(*ngIf="habilitado")
+        button.btn-cerrarMetricas(mat-button, (click)="ocultarMetricas()")
+            mat-icon clear
     .metricas-container(*ngIf="habilitado")
         .contenedor-izquierda
             .porcentaje-acumulado
@@ -22,9 +33,9 @@
                     [mode]="mode",
                     [value]="value",
                     [diameter]="diameter")
-                p {{value}}%
+                h3 Porcentaje actual: {{value}}%
             .pago-minimo
-                h4  Pago minimo de inversion: ${{metrica?.minimo}}
+                p  Pago minimo de inversion: ${{metrica?.minimo}}
         .contenedor-centro
             .fecha-transcurrida
                 mat-progress-spinner(
@@ -34,7 +45,7 @@
                     [value]="value_fecha",
                     [diameter]="diameter_fecha")
             .fecha-numero
-                h4  Tiempo de duracion: {{metrica?.plazo}} meses 
+                p  Tiempo de duracion: {{metrica?.plazo}} meses 
         .contenedor-derecha
             .meta
                 h1 Meta: ${{metrica?.meta}}

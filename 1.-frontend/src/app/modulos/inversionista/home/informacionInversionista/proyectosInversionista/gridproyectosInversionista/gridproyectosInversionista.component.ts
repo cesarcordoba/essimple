@@ -1,11 +1,12 @@
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 import { ProyectoService } from '../../../../../../servicios';
 @Component({
   selector: 'gridproyectosInversionista',
   templateUrl: './gridproyectosInversionista.component.pug',
-  styleUrls: ['./gridproyectosInversionista.component.styl']
+  styleUrls: ['./gridproyectosInversionista.component.styl'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GridproyectosinversionistaComponent implements OnInit {
 
@@ -25,7 +26,7 @@ export class GridproyectosinversionistaComponent implements OnInit {
     //     items : []
     // }
     filtro : any;
-    columnas = 3
+    columnas = 2
     height = '300px'
     colspan = 1
     rowspan = 1
@@ -68,7 +69,7 @@ export class GridproyectosinversionistaComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this.proyectos.forEach(n => this.value = n.porcentaje);
 
   }
 }

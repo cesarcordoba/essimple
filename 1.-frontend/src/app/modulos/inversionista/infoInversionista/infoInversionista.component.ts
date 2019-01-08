@@ -104,13 +104,19 @@ export class InfoinversionistaComponent implements OnInit {
     console.log('inversionista component works')
 		this.us.obtenerUsuario().subscribe(user => {
             this.usuario = user
-            this.fotoAvatar = this.usuario.avatares[0].link
+            if(Object.entries(this.usuario.avatares).length === 0){
+                this.fotoAvatar = null
+            }else{
+                this.fotoAvatar = this.usuario.avatares[0].link
+            }
+            
             MultimediaService.fotoPerfil(this.usuario.id)
             .then(response =>{
                 this.idMultimedia = response[0].id
                 this.fotoPerfil = response[0].link
                 this.control = 2
             })
+
         })
 
 

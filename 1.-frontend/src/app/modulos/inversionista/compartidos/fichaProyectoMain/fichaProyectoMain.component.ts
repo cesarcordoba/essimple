@@ -16,14 +16,10 @@ export class FichaproyectomainComponent implements OnInit {
 
     color = 'warn';
     mode = 'determinate';
-    value = 60;
+    value: any;
 
     constructor(private _router: Router) {
-
-    // ProyectoService.one()
-    // .then(response => this.proyectos = response)
-    // .then(response => console.log(response))
-
+      
   }
 
   mandarAProyecto(id){
@@ -33,6 +29,6 @@ export class FichaproyectomainComponent implements OnInit {
   ngOnInit() {
 
       console.log( this.proyecto  )
-
+      this.value = Math.round((this.proyecto.acumulado * 100) / this.proyecto.meta)
   }
 }

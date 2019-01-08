@@ -8,11 +8,15 @@ export class Proyecto {
     nombre: string;
     imagenes: any;
     portadas: any;
+    porcentaje:any;
+    acumulado: number;
+    meta: number;
 
 
     constructor(arg) {
         Object.entries(arg).forEach(n => this[n[0]] = n[1])
         imagenes: this.obtenerImagenes();
+        porcentaje: this.obtenerPorcentaje();
     }
 
     obtenerImagenes(){
@@ -23,6 +27,10 @@ export class Proyecto {
         PortadaService.xProyecto(this.id)
         .then(response => this.portadas = response)
 
+    }
+
+    obtenerPorcentaje(){
+        this.porcentaje = Math.round((this.acumulado * 100) / this.meta)
     }
 
 }

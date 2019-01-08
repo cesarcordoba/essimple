@@ -1,5 +1,5 @@
 .inverionista-container
-    .foto-perfil(*ngIf="!fotoAvatar")
+    .foto-perfil(*ngIf="fotoAvatar === null")
         .barra-editar-foto-inversionista
             button(mat-button, (click)="editarFoto()")
                 span(*ngIf="!edicionFoto") Editar
@@ -16,13 +16,13 @@
                 dropify([(ngModel)]="file")
                 button.btn-dropify(mat-icon-button, (click)="guardarFoto()")
                     mat-icon save
-    .foto-perfil-avatar(*ngIf="fotoAvatar")
+    .foto-perfil-avatar(*ngIf="fotoAvatar !== null")
         .subir-foto
             .imagen-container(*ngIf="!edicionFoto")
                 .imagen(*ngIf="carga==false")
                     img([src]="fotoAvatar")
                 mat-spinner(*ngIf="carga==true")
-                h4 Foto de Perfil
+                h4 Foto de Avatar
             .inputs(*ngIf="edicionFoto")
                 dropify([(ngModel)]="file")
                 button.btn-dropify(mat-icon-button, (click)="guardarFoto()")

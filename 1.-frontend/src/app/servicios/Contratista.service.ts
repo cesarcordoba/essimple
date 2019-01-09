@@ -27,7 +27,8 @@ export class ContratistaService {
     public static ligarconstructora = (contratista , constructora) => axios.default.put( url + '/data/contratista-constructora/' + contratista + '/' + constructora )
     public static desligarconstructora = (contratista , constructora) => axios.default.delete( url + '/data/contratista-constructora/' + contratista + '/' + constructora )
 
-
+    public static agregarProyecto = (id, peticion) => axios.default.put( url + '/data/agregarProyecto/' + id , peticion)
+    public static obtenerDatos = (id) => axios.default.get( url + '/data/obtenerDatos/' + id).then(response =>  new Contratista( response.data ))
 
     //- Finalizo
 }

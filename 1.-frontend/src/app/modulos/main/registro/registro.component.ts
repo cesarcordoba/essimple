@@ -117,6 +117,8 @@ export class RegistroComponent implements OnInit, AfterViewInit {
                 rfc: form.controls.rfc.value
                 }
 
+                ContratistaService.editar({id:this.contratista.id, tipo: 'constructora'})
+
                 ConstructoraService.crear(constructora)
                 .then(response => {
                     this.constructoras = response
@@ -139,6 +141,8 @@ export class RegistroComponent implements OnInit, AfterViewInit {
             let arquitecto = {
                 cedula: form.controls.cedula.value
                 }
+
+                ContratistaService.editar({id:this.contratista.id, tipo: 'arquitecto'})
 
                 ArquitectoService.crear(arquitecto)
                 .then(response => {

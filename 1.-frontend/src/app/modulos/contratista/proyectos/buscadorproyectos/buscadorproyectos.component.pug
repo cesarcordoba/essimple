@@ -10,3 +10,5 @@ mat-card.autocomplete
             ng-container(*ngIf="!isLoading")
                 mat-option(*ngFor="let item of itemsfiltrados", [value]="item")
                     span {{ item.nombre }}
+    a(mat-button, (click)="nuevoProyecto()", matTooltip="crear nuevo")
+        mat-icon add

@@ -52,6 +52,13 @@ export class ContratistaRouter {
         //* Ruta agregada manualmente
         this._rutas.route('/data/contratista-usuario/contratista/:id')
             .get(this.controlador.obtenerInfo)
+
+
+        this._rutas.route('/data/agregarProyecto/:id')
+            .put(this.controlador.agregarProyecto);
+        
+        // this._rutas.route('/data/obtenerDatos/:id')
+        //     .get(this.controlador.obtenerDatos);
         
         }
 

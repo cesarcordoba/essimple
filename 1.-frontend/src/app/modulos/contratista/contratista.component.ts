@@ -30,11 +30,10 @@ export class ContratistaComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		// console.log('contratista component works')
-		// this.us.obtenerUsuario().subscribe(user => {
-		// 	console.log(user)
-		// 	this.usuario = user
-		// })
+		console.log('contratista component works')
+		this.us.obtenerUsuario().subscribe(user => {
+			this.usuario = user
+		})
 	}
 
 	ngOnDestroy(): void {

@@ -1,13 +1,12 @@
 
-import { Component, OnInit } from '@angular/core';
-
-import { Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Observable } from 'rxjs'
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {switchMap, debounceTime, tap, finalize} from 'rxjs/operators';
 import * as _ from 'lodash'
-
-import { ProyectoService } from '../../../../servicios';
+import { NuevoProyectoComponent } from '../nuevo-proyecto/nuevo-proyecto.component';
+import { ProyectoService, ContratistaService } from '../../../../servicios';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'buscadorproyectos',
   templateUrl: './buscadorproyectos.component.pug',
@@ -22,8 +21,12 @@ export class BuscadorproyectosComponent implements OnInit {
     itemsfiltrados : any[] = [];
     formulario: FormGroup;
     isLoading = false;
+    proyectos = {
+        items : []
+      }
+    @Input() usuario
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private dialog: MatDialog) {
 
         this.formulario = this.fb.group({
             input: null
@@ -55,6 +58,26 @@ export class BuscadorproyectosComponent implements OnInit {
         });
 
   }
+
+        nuevoProyecto(){
+            this.dialog.open(NuevoProyectoComponent ,{
+            width: '290px',
+            height: '200px'
+        }).afterClosed().subscribe(result => {
+            result ?
+                ProyectoService.crear(result)
+                .then(response => {
+                    console.log(response);
+                    // console(response)
+                    let peticion ={
+                        IdProyecto: response.id
+                    }
+                    ContratistaService.agregarProyecto(this.usuario.id, peticion)
+                    this.proyectos.items.push(response)
+                })
+            : null;
+            });
+        }
 
   ngOnInit() {
 

@@ -1,3 +1,4 @@
+import { ContratistaRoutingModule } from './../contratista-routing.module';
 import { ConstructoraService } from './../../../servicios/Constructora.service';
 import { ArquitectoService } from './../../../servicios/Arquitecto.service';
 
@@ -9,7 +10,6 @@ import { MatSnackBar } from '@angular/material';
 import {  BehaviorSubject, Observable  } from 'rxjs'
 
 import { UsuarioService, AWSService, MultimediaService, ContratistaService, AuthService } from '../../../servicios';
-import { Usuario } from './../../../modelos/Usuario.model';
 
 @Component({
   selector: 'infoContratista',
@@ -23,7 +23,7 @@ export class InfocontratistaComponent implements OnInit {
 
     borde = false ?  {'border-color':'rgb(76, 175, 80)'} : {'border-color':'rgb(244, 67, 54)'}
 
-    usuario: Usuario;
+    usuario: any = {}
     contratista: any;
     file: any;
     idMultimedia: any;
@@ -151,8 +151,14 @@ export class InfocontratistaComponent implements OnInit {
         console.log('InfoContratista component works')
         this.us.obtenerUsuario().subscribe(user => {
             this.usuario = user
-            UsuarioService.contratistas(this.usuario.id)
-            .then(response => console.log(response))
+            console.log(this.usuario)
+            // UsuarioService.contratistas(this.usuario.id)
+            // .then(response => {
+            //     this.contratista = response[0].Contratista
+            // })
+
+            ContratistaService.obtenerDatos(this.usuario.id).then(response => console.log(response) )
+
             MultimediaService.fotoPerfil(this.usuario.id)
             .then(response =>{
                 this.idMultimedia = response[0].id

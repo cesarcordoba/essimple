@@ -27,6 +27,7 @@ const ruta_9 = require("./http/constructora/ruta");
 const ruta_10 = require("./http/llave/ruta");
 const ruta_11 = require("./http/avatar/ruta");
 const ruta_12 = require("./http/log/ruta");
+const ruta_13 = require("./http/subscripcion/ruta");
 const modelo_1 = require("./http/proyecto/modelo");
 const modelo_2 = require("./http/contacto/modelo");
 const modelo_3 = require("./http/multimedia/modelo");
@@ -39,6 +40,7 @@ const modelo_9 = require("./http/constructora/modelo");
 const modelo_10 = require("./http/llave/modelo");
 const modelo_11 = require("./http/avatar/modelo");
 const modelo_12 = require("./http/log/modelo");
+const modelo_13 = require("./http/subscripcion/modelo");
 class Server {
     constructor(port, modo, urlAllowOrigin) {
         this.port = port;
@@ -70,6 +72,7 @@ class Server {
             modelo_10.Llave,
             modelo_11.Avatar,
             modelo_12.Log,
+            modelo_13.Subscripcion,
         ]);
         conexion.sync();
         this.app.use((req, res, next) => {
@@ -104,6 +107,7 @@ class Server {
             new ruta_10.LlaveRouter().rutas(),
             new ruta_11.AvatarRouter().rutas(),
             new ruta_12.LogRouter().rutas(),
+            new ruta_13.SubscripcionRouter().rutas(),
             // new UsuarioRouter().rutas(),
             new Autentificacion_1.AutentificacionRouter().rutas(),
         ]);

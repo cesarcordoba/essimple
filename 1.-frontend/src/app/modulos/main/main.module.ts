@@ -55,7 +55,7 @@ import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confir
 		MainComponent,
 		LoginComponent,
 		RegistroComponent,
-		SocialComponent,
+		//-SocialComponent,
 		ConfirmDelDialogComponent
 	],
 	entryComponents : [

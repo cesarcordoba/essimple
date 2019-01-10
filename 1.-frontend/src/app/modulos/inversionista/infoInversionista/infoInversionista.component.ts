@@ -1,6 +1,6 @@
 import { AuthService } from './../../../servicios/auth.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title , Meta }     from '@angular/platform-browser';
 import { ActivatedRoute} from '@angular/router'
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -14,6 +14,7 @@ import { UsuarioService, AWSService, MultimediaService} from '../../../servicios
   styleUrls: [
       './infoInversionista.component.styl'
   ],
+  encapsulation: ViewEncapsulation.None,
   providers: [AWSService]
 })
 export class InfoinversionistaComponent implements OnInit {

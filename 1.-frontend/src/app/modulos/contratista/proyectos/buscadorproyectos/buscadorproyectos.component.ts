@@ -70,9 +70,10 @@ export class BuscadorproyectosComponent implements OnInit {
                     console.log(response);
                     // console(response)
                     let peticion ={
-                        IdProyecto: response.id
+                        IdProyecto: response.id,
+                        IdUsuario: this.usuario.id
                     }
-                    ContratistaService.agregarProyecto(this.usuario.id, peticion)
+                    ContratistaService.crear(peticion)
                     this.proyectos.items.push(response)
                 })
             : null;

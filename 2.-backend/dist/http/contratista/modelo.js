@@ -50,11 +50,11 @@ __decorate([
     __metadata("design:type", void 0)
 ], Contratista.prototype, "tipo", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsToMany(() => modelo_1.Arquitecto, 'contratistasarquitectos', 'IdContratista', 'IdArquitecto'),
+    sequelize_typescript_1.BelongsToMany(() => modelo_1.Arquitecto, 'arquitectoscontratistas', 'IdContratista', 'IdArquitecto'),
     __metadata("design:type", Array)
 ], Contratista.prototype, "Arquitectos", void 0);
 __decorate([
-    sequelize_typescript_1.BelongsToMany(() => modelo_2.Constructora, 'contratistasconstructoras', 'IdContratista', 'IdConstructora'),
+    sequelize_typescript_1.BelongsToMany(() => modelo_2.Constructora, 'constructorascontratistas', 'IdContratista', 'IdConstructora'),
     __metadata("design:type", Array)
 ], Contratista.prototype, "Constructoras", void 0);
 Contratista = __decorate([

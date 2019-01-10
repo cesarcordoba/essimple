@@ -4,23 +4,180 @@
     flex-direction row
     justify-content center
     min-height 80vh
-    .foto-perfil, .foto-perfil-avatar
+    .contenedor-derecho
         width 50%
         display flex
         flex-direction column
         align-items center
-        .subir-foto
-            .imagen-container
-                .imagen
-                    width 100px
-                    height 100px
-                    border-radius 49%
-                    overflow hidden
-                    img
-                        width 100%
-                        height 100%
-    .informacion-basica
+        padding 10px
+        @media mediana
+            width 98%
+        @media tablet
+            width 98%
+        @media mobile
+            width 98%
+        .informacion-basica
+            width 100%
+            background-color white
+            border-radius 15px
+            border 1px solid rgba(190,190,190,04)
+            .barra-editar-inversionista
+                border-top-left-radius 15px
+                border-top-right-radius 15px
+                background-color #f38423;
+                position relative
+                height 37px
+                .titulo
+                    position absolute
+                    color #fff
+                    top 0
+                    left 0px
+                    display flex
+                    height 100%
+                    justify-content center
+                    align-items center
+                    padding 2px
+                    h3
+                        font-size 16px
+                        margin 0
+                .btn-usuario-inversionista
+                    position absolute
+                    color white
+                    top 0
+                    right 0
+            .usuario-inverionista
+                .antes-edicion
+                    padding 20px
+                    .nombre, .apellido, .correo
+                        display flex
+                        flex-direction row
+                        justify-content space-between
+                        align-items center
+                        height 30px
+                        h4, p
+                            margin 0
+                            font-size 18px
+                        p
+                            width 100%
+                            margin-left 10px
+                .edicion
+                    padding 20px
+                    .fomulario-usuarios
+                        display flex
+                        justify-content center
+                        flex-direction column
+                    .contenedor-guardar-usuario
+                        .btn-guardar-usuario
+                            background-color #46ad46
+                            span
+                                color white
+                                font-size 14px
+                                font-weight 800
+
+    .contenedor-izquierdo
         width 50%
         display flex
         flex-direction column
         align-items center
+        padding 10px
+        @media mediana
+            width 98%
+        @media tablet
+            width 98%
+        @media mobile
+            width 98%
+        .foto-perfil
+            width 100%
+            background-color white
+            border-radius 15px
+            border 1px solid rgba(190,190,190,04)
+            .barra-editar-foto-inversionista
+                border-top-left-radius 15px
+                border-top-right-radius 15px
+                background-color #f38423;
+                position relative
+                height 37px
+                .btn-editar-foto-inversionista
+                    position absolute
+                    color white
+                    top 0
+                    right 0
+            .subir-foto
+                display flex
+                justify-content center
+                align-items center
+                .imagen-container
+                    .imagen
+                        width 200px
+                        height 200px
+                        border-radius 128px
+                        overflow hidden
+                        img
+                            width 100%
+                            height 100%
+                    h4
+                        margin 0
+                        font-size 18px
+                        text-align center
+                .inputs
+                    padding 20px
+                    .btn-dropify
+                        background-color #46ad46
+                        margin-top 10px
+                        span
+                            color white
+                            font-size 14px
+                            font-weight 800
+        .foto-perfil-avatar
+            width 100%
+            background-color white
+            border-radius 15px
+            border 1px solid rgba(190,190,190,04)
+            .subir-foto
+                display flex
+                justify-content center
+                align-items center
+                .imagen-container
+                    .imagen
+                        width 100px
+                        height 100px
+                        border-radius 128px
+                        overflow hidden
+                        img
+                            width 100%
+                            height 100%
+                    h4
+                        margin 0
+                        font-size 18px
+                        text-align center
+    // .foto-perfil, .foto-perfil-avatar
+    //     width 50%
+    //     display flex
+    //     flex-direction column
+    //     align-items center
+    //     .subir-foto
+    //         .imagen-container
+    //             .imagen
+    //                 width 100px
+    //                 height 100px
+    //                 border-radius 49%
+    //                 overflow hidden
+    //                 img
+    //                     width 100%
+    //                     height 100%
+    // .informacion-basica
+    //     width 100%
+    //     background-color white
+    //     border-radius 15px
+    //     border 1px solid rgba(190,190,190,04)
+    //     .barra-editar-inversionista
+    //         border-top-left-radius 15px
+    //         border-top-right-radius 15px
+    //         background-color #597cff
+    //         position relative
+    //         height 37px
+    //         .btn-usuario-inversionista
+    //             position absolute
+    //             color white
+    //             top 0
+    //             right 0

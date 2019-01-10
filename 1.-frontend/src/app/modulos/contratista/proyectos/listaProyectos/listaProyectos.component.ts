@@ -1,9 +1,10 @@
 
 import { Component, OnInit, Input } from '@angular/core';
-
+import { AuthService } from './../../../../servicios/auth.service';
 import { ProyectoService, UsuarioService } from '../../../../servicios';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
+import { Usuario } from './../../../../modelos/Usuario.model';
 import { ConfirmDelDialogComponent } from '../../fragments/confirm-del-dialog/confirm-del-dialog.component';
 @Component({
   selector: 'listaProyectos',
@@ -13,15 +14,12 @@ import { ConfirmDelDialogComponent } from '../../fragments/confirm-del-dialog/co
 export class ListaproyectosComponent implements OnInit {
 
     borde = false ?  {'border-color':'rgb(76, 175, 80)'} : {'border-color':'rgb(244, 67, 54)'}
-
+    usuario: Usuario;
     proyectos = {
       items : []
     }
-    constructor(private _router: Router, private dialog: MatDialog) {
+    constructor(private _router: Router, private dialog: MatDialog, private us: AuthService) {
       
-      UsuarioService.contratistas(1)
-      .then(response => this.proyectos.items = response)
-
   }
   mandarAProyecto(id){
     this._router.navigate(['/contratista/proyectos/' + id]);
@@ -42,8 +40,10 @@ export class ListaproyectosComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-
+    this.us.obtenerUsuario().subscribe(user => {
+      this.usuario = user
+      UsuarioService.contratistas(this.usuario.id)
+      .then(response => this.proyectos.items = response)
+		})
   }
 }

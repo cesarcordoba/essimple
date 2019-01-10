@@ -2,7 +2,7 @@ import { ContratistaRoutingModule } from './../contratista-routing.module';
 import { ConstructoraService } from './../../../servicios/Constructora.service';
 import { ArquitectoService } from './../../../servicios/Arquitecto.service';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title , Meta }     from '@angular/platform-browser';
 import { ActivatedRoute} from '@angular/router'
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -17,6 +17,7 @@ import { UsuarioService, AWSService, MultimediaService, ContratistaService, Auth
   styleUrls: [
       './infoContratista.component.styl'
   ],
+  encapsulation: ViewEncapsulation.None,
   providers: [AWSService]
 })
 export class InfocontratistaComponent implements OnInit {
@@ -115,14 +116,16 @@ export class InfocontratistaComponent implements OnInit {
   }
 
     guardarUsuario() {
+        console.log(this.usuario)
         UsuarioService.editar(this.usuario)
-        this.snackBar.open("Guardado Correctamente", "", { duration: 1000 });
+        this.snackBar.open("Guardado Correctamente", "", { duration: 2000 });
         this.edicion_usuario = !this.edicion_usuario
     }
 
     guardarContratista() {
+        
         ContratistaService.editar(this.contratista)
-        this.snackBar.open("Guardado Correctamente", "", { duration: 1000 });
+        this.snackBar.open("Guardado Correctamente", "", { duration: 2000 });
         this.edicion_contratista = !this.edicion_contratista
         // UsuarioService.editar(this.usuario)
         // this.snackBar.open("Guardado Correctamente", "", { duration: 1000 });
@@ -131,7 +134,7 @@ export class InfocontratistaComponent implements OnInit {
 
     guardarArquitecto() {
         ArquitectoService.editar(this.arquitecto)
-        this.snackBar.open("Guardado Correctamente", "", { duration: 1000 });
+        this.snackBar.open("Guardado Correctamente", "", { duration: 2000 });
         this.edicion_extra = !this.edicion_extra
         // UsuarioService.editar(this.usuario)
         // this.snackBar.open("Guardado Correctamente", "", { duration: 1000 });
@@ -140,7 +143,7 @@ export class InfocontratistaComponent implements OnInit {
 
     guardarConstructora() {
         ConstructoraService.editar(this.constructora)
-        this.snackBar.open("Guardado Correctamente", "", { duration: 1000 });
+        this.snackBar.open("Guardado Correctamente", "", { duration: 2000 });
         this.edicion_extra = !this.edicion_extra
         // UsuarioService.editar(this.usuario)
         // this.snackBar.open("Guardado Correctamente", "", { duration: 1000 });
@@ -152,18 +155,28 @@ export class InfocontratistaComponent implements OnInit {
         this.us.obtenerUsuario().subscribe(user => {
             this.usuario = user
             console.log(this.usuario)
-            // UsuarioService.contratistas(this.usuario.id)
-            // .then(response => {
-            //     this.contratista = response[0].Contratista
-            // })
+            UsuarioService.contratistas(this.usuario.id)
+            .then(response => {
+                console.log(response)
+                this.contratista = response[0].Contratista
 
-            ContratistaService.obtenerDatos(this.usuario.id).then(response => console.log(response) )
+                if(this.contratista.tipo === "arquitecto"){
+                    ContratistaService.arquitectos(this.contratista.id)
+                    .then(response => this.arquitecto = response[0])
+                }else{
+                    ContratistaService.constructoras(this.contratista.id)
+                    .then(response => this.constructora = response[0])
+                }
+            })
+
+            //-ContratistaService.obtenerDatos(this.usuario.id).then(response => console.log(response) )
 
             MultimediaService.fotoPerfil(this.usuario.id)
             .then(response =>{
                 this.idMultimedia = response[0].id
                 this.fotoPerfil = response[0].link
                 this.control = 2
+                console.log(response)
             })
         })
         

@@ -48,10 +48,10 @@ export class Contratista extends Model<Contratista> {
     tipo : undefined;
     
 
-    @BelongsToMany(()=> Arquitecto,'contratistasarquitectos','IdContratista', 'IdArquitecto')
+    @BelongsToMany(()=> Arquitecto,'arquitectoscontratistas','IdContratista', 'IdArquitecto')
     Arquitectos : Arquitecto[];
 
-    @BelongsToMany(()=> Constructora,'contratistasconstructoras','IdContratista', 'IdConstructora')
+    @BelongsToMany(()=> Constructora,'constructorascontratistas','IdContratista', 'IdConstructora')
     Constructoras : Constructora[];
 
     constructor(values?: any, options?: any) {

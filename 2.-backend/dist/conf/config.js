@@ -63,7 +63,7 @@ class Config {
     }
     produccion() {
         //-this._url_allow_origin = ['https://esimplefront.herokuapp.com', 'https://admin.elgigantedelosazulejos.com.mx', 'https://elgigantedelosazulejos.com.mx', 'http://lvh.me:4200']
-        this._url_allow_origin = ['https://essimple.mx', 'https://admin.essimple.mx', 'https://contratista.essimple.mx', 'https://inversionista.essimple.mx', 'http://lvh.me:4200'];
+        this._url_allow_origin = ['https://essimple.mx', 'https://admin.essimple.mx', 'https://contratista.essimple.mx', 'https://inversionista.essimple.mx', 'http://lvh.me:4200', 'https://www.essimple.mx'];
         this._token_secreto = 'zukulenciamaspro';
         this._app = { port: 5000 };
         this._db = { host: '35.232.156.254', port: 3306, database: 'esimple', username: 'esSimple', password: '#1q2w3e4r', dialec: 'mysql' };

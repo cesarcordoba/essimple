@@ -65,6 +65,18 @@ class ContratistaController {
             .then(item => item.$remove('Constructoras', req.params.constructora))
             .then(result => res.status(200).jsonp(result))
             .catch(err => errorHandler(err, 'desligarContratistaconstructoras'));
+        //Controlador agregado manualmente
+        this.obtenerInfo = (req, res, next) => modelo_1.Contratista.findById(req.params.id)
+            .then(item => item.$get('Usuarios'))
+            .then(result => res.status(200).jsonp(result))
+            .catch(err => errorHandler(err, 'obtenerInfo'));
+        this.agregarProyecto = (req, res, next) => modelo_1.Contratista.update(req.body, { where: { IdUsuario: req.params.id } })
+            .then(response => res.status(200).jsonp(response))
+            .catch(err => errorHandler(err, 'agregarProyectoContratista'));
+        // obtenerDatos = (req: Request, res: Response, next: NextFunction) =>
+        //     Contratista.findAll({where: {IdUsuario: req.params.id}})
+        //         .then(response => res.status(200).jsonp(response))
+        //         .catch(err => errorHandler(err, 'agregarProyectoContratista'))
     }
 }
 exports.ContratistaController = ContratistaController;

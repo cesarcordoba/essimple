@@ -30,7 +30,8 @@ class ProyectoController {
             .catch(err => errorHandler(err, 'eliminarProyecto'));
         //* null
         this.paginacion = (req, res, next) => modelo_1.Proyecto.findAndCountAll({
-        // order : ['nombre']
+            // order : ['nombre']
+            where: req.body.where
         }).then(response => res.status(200).jsonp(new Object({
             items: _.chunk(response.rows, req.body.limite)[req.body.pagina - 1],
             paginas: Math.round(response.count / req.body.limite)

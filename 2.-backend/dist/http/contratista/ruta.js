@@ -35,6 +35,13 @@ class ContratistaRouter {
         this._rutas.route('/data/contratista-constructora/:contratista/:constructora')
             .put(this.controlador.ligarconstructoras)
             .delete(this.controlador.desligarconstructoras);
+        //* Ruta agregada manualmente
+        this._rutas.route('/data/contratista-usuario/contratista/:id')
+            .get(this.controlador.obtenerInfo);
+        this._rutas.route('/data/agregarProyecto/:id')
+            .put(this.controlador.agregarProyecto);
+        // this._rutas.route('/data/obtenerDatos/:id')
+        //     .get(this.controlador.obtenerDatos);
     }
     rutas() {
         return this._rutas;

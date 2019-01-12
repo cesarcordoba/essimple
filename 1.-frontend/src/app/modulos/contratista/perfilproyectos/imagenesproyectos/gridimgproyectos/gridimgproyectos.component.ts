@@ -23,7 +23,7 @@ export class GridimgproyectosComponent implements OnInit {
     //     items : []
     // }
     // filtro : any;
-    columnas = 4
+    columnas = 3
     height = '200px'
     colspan = 1
     rowspan = 1

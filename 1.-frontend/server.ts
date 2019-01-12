@@ -152,7 +152,7 @@ app.get('*.*', express.static('./dist/browser', {
 
 let ruteador = Ruteador.init();
 
-ruteador.setRuteoMain(['/', '/proyectos', '/proyecto/:id', '/nosotros', '/preguntas', '/contacto', '/registro', '/login', '/social/:token'])
+ruteador.setRuteoMain(['/', '/proyectos', '/proyecto/:id', '/nosotros', '/preguntas', '/contacto', '/registro', '/privacidad', '/terminos', '/login', '/social/:token'])
 ruteador.setRuteoAdmin([ '/', '/admin','/admin/proyectos','/admin/proyectos/:id', '/admin/usuarios', '/admin/inversionistas', '/admin/inversionista/:id', '/admin/contratistas', '/admin/contratista/:id'])
 ruteador.setRuteoInversionista(['/', '/inversionista', '/inversionista/proyectos' ])
 ruteador.setRuteoContratista(['/', '/contratista', '/contratista/proyectos', '/contratista/proyectos/:id'])

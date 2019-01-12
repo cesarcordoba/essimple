@@ -3,12 +3,6 @@ mat-card.lista-proyectos-contratista
         ng-container(matColumnDef="nombre")
             mat-header-cell( *matHeaderCellDef) Nombre
             mat-cell( *matCellDef="let element") {{element.nombre}}
-        ng-container(matColumnDef="vacio1")
-            mat-header-cell( *matHeaderCellDef) 
-            mat-cell( *matCellDef="let element") 
-        ng-container(matColumnDef="vacio2")
-            mat-header-cell( *matHeaderCellDef) 
-            mat-cell( *matCellDef="let element") 
         ng-container(matColumnDef="vacio3")
             mat-header-cell( *matHeaderCellDef) 
             mat-cell( *matCellDef="let element") 
@@ -16,10 +10,10 @@ mat-card.lista-proyectos-contratista
             mat-header-cell( *matHeaderCellDef) Botones
             mat-cell( *matCellDef="let element")
                 .botones
-                    a(mat-button, (click)="mandarAProyecto(element.id)", matTooltip="Ir al proyecto")
+                    a.btn-irProyecto(mat-button, (click)="mandarAProyecto(element.id)", matTooltip="Ir al proyecto")
                         mat-icon remove_red_eye
-                    a(mat-button, (click)="borrarProyecto(element)", matTooltip="Eliminar")
+                    a.btn-eliminar(mat-button, (click)="borrarProyecto(element)", matTooltip="Eliminar")
                         mat-icon delete
-        mat-header-row( *matHeaderRowDef="['nombre','vacio1','vacio2','vacio3', 'botones']")
-        mat-row(*matRowDef="let row; columns: ['nombre','vacio1','vacio2','vacio3', 'botones'];")
+        mat-header-row( *matHeaderRowDef="['nombre','vacio3', 'botones']")
+        mat-row(*matRowDef="let row; columns: ['nombre','vacio3', 'botones'];")
     mat-paginator([length]="proyectos.items.length", [pageSize]="10", [pageSizeOptions]="[5, 10, 25, 100]")

@@ -96,14 +96,14 @@ class Config {
 		//-mysql://b3c714d746612b:98f8c0f6@us-cdbr-iron-east-01.cleardb.net/heroku_36f0b6cec16010f?reconnect=true
 		this._keys = {
 			facebook: {
-				clientID: '870496999775638',
-				clientSecret: '890cc3007255067044a4a862a6fcedfc',
-				callbackURL: 'http://api.lvh.me:5000/login/facebook/callback'
+				clientID: '325022891464521',
+				clientSecret: '0d609aa92118b022014a0901cbf1f4d6',
+				callbackURL: 'https://www.essimple.mx/login/facebook/callback'
 			},
 			google: {
 				clientID: "65502020027-2hcilnkgsbeu4n0g1agt8fd2uicgkf0f.apps.googleusercontent.com",
 				clientSecret: "AIzaSyCkzJimM5L6Za9p6C9RxNWEP8OyisLHsQU",
-				callbackURL: "http://api.lvh.me:5000/login/google/callback"
+				callbackURL: "https://www.essimple.mx/login/google/callback"
 			},
 			twitter: {
 				consumerKey: "OabNHqICoIV9WAviIb0gkpiom",

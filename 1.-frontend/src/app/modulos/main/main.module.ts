@@ -30,6 +30,8 @@ import { PerfilproyectosmainModule } from './perfilProyectosMain/perfilProyectos
 
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
+import { PrivacidadComponent } from './privacidad/privacidad.component';
+import { TerminosComponent } from './terminos/terminos.component';
 import { SocialComponent } from '../../guards/social/social.component';
 import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confirm-del-dialog.component';
 
@@ -55,7 +57,9 @@ import { ConfirmDelDialogComponent } from './fragments/confirm-del-dialog/confir
 		MainComponent,
 		LoginComponent,
 		RegistroComponent,
-		SocialComponent,
+		PrivacidadComponent,
+		TerminosComponent,
+		//-SocialComponent,
 		ConfirmDelDialogComponent
 	],
 	entryComponents : [

@@ -13,6 +13,8 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { PerfilproyectosmainComponent } from './perfilProyectosMain/perfilProyectosMain.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
+import { PrivacidadComponent } from './privacidad/privacidad.component';
+import { TerminosComponent } from './terminos/terminos.component';
 import { SocialComponent } from '../../guards/social/social.component';
 import { SocialGuard } from '../../guards/social.guard';
 
@@ -51,6 +53,14 @@ const main_routers: Routes = [
 			{
                 path: 'registro',
                 component: RegistroComponent
+			},
+			{
+                path: 'privacidad',
+                component: PrivacidadComponent
+			},
+			{
+                path: 'terminos',
+                component: TerminosComponent
             }
     ]
 	},

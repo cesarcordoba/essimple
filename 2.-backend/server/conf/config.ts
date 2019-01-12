@@ -98,12 +98,12 @@ class Config {
 			facebook: {
 				clientID: '325022891464521',
 				clientSecret: '0d609aa92118b022014a0901cbf1f4d6',
-				callbackURL: 'https://www.essimple.mx/login/facebook/callback'
+				callbackURL: 'https://api.essimple.mx/login/facebook/callback'
 			},
 			google: {
 				clientID: "65502020027-2hcilnkgsbeu4n0g1agt8fd2uicgkf0f.apps.googleusercontent.com",
 				clientSecret: "AIzaSyCkzJimM5L6Za9p6C9RxNWEP8OyisLHsQU",
-				callbackURL: "https://www.essimple.mx/login/google/callback"
+				callbackURL: "https://api.essimple.mx/login/google/callback"
 			},
 			twitter: {
 				consumerKey: "OabNHqICoIV9WAviIb0gkpiom",
